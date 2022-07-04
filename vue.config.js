@@ -17,7 +17,7 @@ module.exports = {
     // 啟動後開啟瀏覽器
     open: true,
     // 設置主機地址
-    host: "local.nueip.site",
+    host: "localhost",
     // 設置默認埠號
     port: 9527,
     // 啟用 HTTPS 協定
