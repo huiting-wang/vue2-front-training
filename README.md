@@ -1,6 +1,6 @@
 # vue-front-exam
 
-# 專案目錄結構
+# Project Directory Structure
 
 ```text
 ├─ .vscode                   // VSCode 設定目錄
@@ -16,6 +16,7 @@
 │ ├─ App.vue                 // 預設首頁入口
 │ ├─ main.js                 // 程式入口檔案，初始化vue實例、所需外掛與載入各公用元件
 ├─ tests                     // 前端單元、e2e等測試項目目錄
+├─ .env                      // 所有的環境載入配置的文件
 ├─ .eslintignore             // Eslint 忽略配置文件
 ├─ .eslintrc.js              // Eslint 配置文件
 ├─ .gitignore                // Git 忽略配置文件
