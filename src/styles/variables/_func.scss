@@ -1,0 +1,52 @@
+/* BEM Support Function */
+
+// 將selector轉成字串
+@function selectorToString($selector) {
+  $selector: inspect($selector);
+  $selector: str-slice($selector, 2, -2);
+  @return $selector;
+}
+
+// selector是否包含修式子(--modifier)
+@function containsModifier($selector) {
+  $selector: selectorToString($selector);
+
+  @if str-index($selector, $modifier-separator) {
+    @return true;
+  }
+
+  @else {
+    @return false;
+  }
+}
+
+// selector是否包含狀態(is-)
+@function containWhenFlag($selector) {
+  $selector: selectorToString($selector);
+
+  @if str-index($selector, '.' + $state-prefix) {
+    @return true;
+  }
+
+  @else {
+    @return false;
+  }
+}
+
+// selector是否包含虛擬類別(:前綴)
+@function containPseudoClass($selector) {
+  $selector: selectorToString($selector);
+
+  @if str-index($selector, ':') {
+    @return true;
+  }
+
+  @else {
+    @return false;
+  }
+}
+
+// selector 是否包含特殊巢狀結構 (修式子/狀態/虛擬類別)
+@function hitAllSpecialNestRule($selector) {
+  @return containsModifier($selector) or containWhenFlag($selector) or containPseudoClass($selector);
+}

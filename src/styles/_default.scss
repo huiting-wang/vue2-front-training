@@ -1,0 +1,102 @@
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eeeeee;
+  border-left: 1px solid #dddddd;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c1c1c1;
+}
+
+html {
+  overflow: hidden;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  color: $base-font-color;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: $white;
+  font-family: $base-font-family;
+}
+
+button {
+  color: $base-font-color;
+  border: none;
+  transition: .5s;
+  cursor: pointer;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+  font-size: $base-font-size;
+
+  &:active,
+  &:visited {
+    color: unset;
+  }
+}
+
+// 標題標籤
+@for $i from 1 through 6 {
+  h#{$i} {
+    margin: 0;
+    padding: 8px 0;
+    font-weight: 600;
+  }
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+h4,
+h5,
+h6,
+span {
+  font-size: $base-font-size;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pointer-events-none {
+  pointer-events: none
+}
+
+/* ------ Element UI ------ */
+.el-header {
+  padding: 0;
+  background-color: $white;
+  z-index: 2000;
+}

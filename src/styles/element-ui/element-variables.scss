@@ -1,0 +1,15 @@
+/**
+ * Update SCSS variables
+ * https://element.eleme.io/#/en-US/component/custom-theme
+ **/
+
+/* Theme Color */
+$--color-primary: $primary;
+$--color-info: #aaabab;
+
+/* Font Color */
+$--color-text-regular: $base-font-color;
+$--color-text-placeholder: #aaabab;
+
+/* icon font path, required */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';

@@ -1,0 +1,313 @@
+/**
+ * 禁止選取
+ * @param $value : (auto | text | none | contain | all)
+ */
+@mixin utils-user-select($value) {
+  -moz-user-select: $value;
+  -webkit-user-select: $value;
+  -ms-user-select: $value;
+}
+
+/**
+ * 在偽元素中使用 mdi icon
+ */
+@mixin mdi-icon {
+  font-family: 'Material Design Icons' !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @content;
+}
+
+/**
+ * Placeholder
+ */
+@mixin placeholder {
+  ::-webkit-input-placeholder {
+    @content;
+  }
+
+  :-moz-placeholder {
+    @content;
+  }
+
+  ::-moz-placeholder {
+    @content;
+  }
+
+  :-ms-input-placeholder {
+    @content;
+  }
+}
+
+/**
+ * 動畫
+ */
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+/** 
+ * Position
+ *
+ * @param $p : position (relative|absolute|sticky|fixed)
+ * @param $t : top
+ * @param $r : right
+ * @param $b : bottom
+ * @param $l : left
+ */
+@mixin setPosition($p: relative, $t: auto, $r: auto, $b: auto, $l: auto) {
+  position: $p;
+
+  @if not($p ==relative) {
+    top: $t;
+    right: $r;
+    bottom: $b;
+    left: $l;
+  }
+}
+
+/** 
+ * Flex
+ *
+ * @param $fd : flex-direction (預設為 row)
+ * @param $jc : justify-content (預設為 center)
+ * @param $ai : align-item (預設為 center)
+ * @param $fw : flex-wrap (預設為 wrap)
+ */
+@mixin setFlex($fd: row, $jc: center, $ai: center, $fw: wrap) {
+  display: flex;
+  flex-direction: $fd;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-wrap: $fw;
+}
+
+/** 
+ * Ellipsis
+ *
+ * @param $row : 文字第幾行以後切掉 (預設為 1 行)
+ */
+@mixin setTextEllipsis($row: 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+
+  @if ($row > 1) {
+    display: -webkit-box;
+    -webkit-line-clamp: $row;
+    -webkit-box-orient: vertical;
+  }
+
+  @else {
+    white-space: nowrap;
+  }
+}
+
+/**
+ * Box Shadow
+ * 配置兼容主要瀏覽器
+ *
+ * @param $shadow : shadow 設定
+ */
+@mixin shadow($shadow...) {
+
+  @each $pre in -webkit-,
+  -moz-,
+  -ms-,
+  -o- {
+    #{$pre + box-shadow}: $shadow;
+  }
+
+  #{box-shadow}: $shadow;
+}
+
+/**
+ * 自定義 Scrollbar
+ *
+ * @param $weight : scrollbar 寬度
+ * @param $track : scrollbar 軌道顏色
+ * @param $thumb : scrollbar 拉霸顏色
+ */
+@mixin scrollbar($weight: 6px, $track: transparent, $thumb: $gray-light-5) {
+
+  /* WebKit and Chromiums */
+  &::v-deep ::-webkit-scrollbar {
+    width: $weight;
+    height: $weight;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track;
+    border: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb;
+  }
+
+  /* For Firefox */
+  scrollbar-color: $thumb $track;
+
+  @if $weight < 10px {
+    scrollbar-width: thin;
+  }
+
+  @content;
+}
+
+/**
+ * == Responsive Media Query ==
+ * @param $query : 裝置類型
+ * @param $rules : screen width (min or max)
+ */
+@mixin media($query, $rules: max) {
+  @if $query==desktop {
+    @media screen and (#{$rules}-width: $desktop) {
+      @content;
+    }
+  }
+
+  @if $query==tablet-landscape {
+    @media screen and (#{$rules}-width: $tablet-landscape) {
+      @content;
+    }
+  }
+
+  @if $query==tablet-protrait {
+    @media screen and (#{$rules}-width: $tablet-protrait) {
+      @content;
+    }
+  }
+
+  @if $query==phone {
+    @media screen and (#{$rules}-width: $phone) {
+      @content;
+    }
+  }
+}
+
+/** === BEM component 區塊 ===
+  * 對最外層區塊class命名
+  * @param $namespace : 區塊 class 命名前綴
+  * @param $component : 區塊 class 名稱
+  * @content { 子層內容 }
+
+  .namespace-component =>
+  @include component(namespace, component) { ... }
+*/
+@mixin component($namespace, $component) {
+  $B: $namespace +'-'+$component  !global;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+/** === BEM element 元素 ===
+ * 對子層元素class命名
+ * @param $element : 元素 class 命名
+ * @content { 子層內容 }
+  
+   .namespace-component__element =>
+    @include component(namespace, component) { 
+      @include element(element) { ... }
+   }
+ */
+@mixin element($element) {
+  $E: $element  !global;
+  $selector: &;
+  $currentSelector: '';
+
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector + & + $element-separator + $unit + ','};
+  }
+
+  @if hitAllSpecialNestRule($selector) {
+    @at-root {
+      #{$selector} {
+        #{$currentSelector} {
+          @content;
+        }
+      }
+    }
+  }
+
+  @else {
+    @at-root {
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  }
+}
+
+/** === BEM modifier 修飾子 ===
+ * 對修飾子class命名
+ * @param $modifier : 修飾子 class 命名
+ * @content { 子層內容 }
+  
+   .namespace-component__element--modifier =>
+    @include component(namespace, component) { 
+      @include element(element) { 
+        @include modifier(modifier) { ... }
+      }
+    }
+ */
+@mixin modifier($modifier) {
+  $selector: &;
+  $currentSelector: '';
+
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector + & + $modifier-separator + $unit + ','};
+  }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+/** === BEM state 狀態 ===
+ * 對特殊狀態的class命名，'is-'為前綴
+ * @param $state : 狀態
+ * @content { 子層內容 }
+ 
+ .is-state =>
+ @include when(state){ ... }
+ */
+@mixin when($state) {
+  $selector: &;
+
+  @if hitAllSpecialNestRule($selector) {
+    @at-root {
+      #{$selector} {
+        .#{$state-prefix + $state} {
+          @content;
+        }
+      }
+    }
+  }
+
+  @else {
+    @at-root {
+      .#{$state-prefix + $state} {
+        @content;
+      }
+    }
+  }
+}

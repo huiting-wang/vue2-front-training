@@ -30,12 +30,12 @@ module.exports = {
     extract: isProduction,
     // 是否產出 CSS Source Map
     sourceMap: !isProduction,
-    // loaderOptions: {
-    //   // 全局引入變數
-    //   scss: {
-    //     additionalData: `@import "@/styles/global-var.scss";`,
-    //   },
-    // },
+    loaderOptions: {
+      // 全局引入變數
+      scss: {
+        additionalData: `@import "@/styles/global-var.scss";`,
+      },
+    },
   },
   // Webpack 設定
   configureWebpack: {
