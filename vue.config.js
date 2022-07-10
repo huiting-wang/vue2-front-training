@@ -1,6 +1,6 @@
 "use strict";
 
-const path = require("path");
+const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const isProduction = ["production"].includes(process.env.NODE_ENV);
 
@@ -9,7 +9,7 @@ module.exports = {
   outputDir: "dist",
   publicPath: isProduction ? "/vue-front-exam/" : "/",
   // 是否開啟 ESlint 檢測
-  lintOnSave: !isProduction,
+  lintOnSave: true,
   // 是否在打包時產出 Source Map
   productionSourceMap: !isProduction,
   devServer: {
@@ -17,9 +17,9 @@ module.exports = {
     // 啟動後開啟瀏覽器
     open: true,
     // 設置主機地址
-    host: "localhost",
+    host: process.env.VUE_APP_HOST,
     // 設置默認埠號
-    port: 9527,
+    port: process.env.VUE_APP_PORT,
     // 啟用 HTTPS 協定
     https: true,
   },
@@ -42,15 +42,15 @@ module.exports = {
     name: "Vue Front Exam",
     // 配置目錄解析別名
     resolve: {
-      alias: {
-        "@": path.join(__dirname, "src"),
-      },
       // 讓 Webpack 5 支援 node.js 路徑 API
       fallback: {
         path: require.resolve("path-browserify"),
       },
     },
-    plugins: [],
+    plugins: [
+      // Loadsh 按需引入
+      new LodashModuleReplacementPlugin(),
+    ],
     devtool: isProduction ? false : "eval-cheap-module-source-map",
     optimization: {
       minimize: isProduction,
@@ -116,7 +116,6 @@ module.exports = {
           default: {
             priority: 10,
             minChunks: 2,
-            reuseExistingChunk: true,
           },
         },
       });
