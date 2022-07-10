@@ -1,6 +1,6 @@
 import Mock from "mockjs";
-import { orderBy, isString } from "lodash";
-import { regexString } from "@/utils/";
+import { orderBy } from "lodash";
+import { regexString, isString } from "@/utils/";
 
 const defaultOpt = {
   // api 網址

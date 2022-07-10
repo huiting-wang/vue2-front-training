@@ -1,5 +1,5 @@
 import Mock from "mockjs";
-import templates from "./templates";
+import templates from "./v1";
 
 /**
  * @param {string} url - 請求網址
