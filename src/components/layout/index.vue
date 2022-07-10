@@ -2,36 +2,12 @@
   <el-container>
     <el-aside width="240px" style="background-color: #2c3e50">
       <layout-sidebar>
-        <el-submenu index="1">
-          <template slot="title">
-            <i class="el-icon-location"></i>
-            <span slot="title">Navigator One</span>
-          </template>
-          <el-menu-item-group>
-            <span slot="title">Group One</span>
-            <el-menu-item index="1-1">item one</el-menu-item>
-            <el-menu-item index="1-2">item two</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="Group Two">
-            <el-menu-item index="1-3">item three</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="1-4">
-            <span slot="title">item four</span>
-            <el-menu-item index="1-4-1">item one</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-menu-item index="2">
-          <i class="el-icon-menu"></i>
-          <span slot="title">Navigator Two</span>
-        </el-menu-item>
-        <el-menu-item index="3" disabled>
-          <i class="el-icon-document"></i>
-          <span slot="title">Navigator Three</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title">Navigator Four</span>
-        </el-menu-item>
+        <!-- 巢狀選單項目 -->
+        <LayoutNested
+          v-for="route in menuRoutes"
+          :key="route.path"
+          :item="route"
+        />
       </layout-sidebar>
     </el-aside>
 
@@ -44,7 +20,7 @@
       </el-header>
 
       <!-- 主要內容 -->
-      <el-main id="exam-main">
+      <el-main id="layout-main">
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -52,11 +28,18 @@
 </template>
 
 <script>
+import { routes } from "@/router/routes";
 import LayoutSidebar from "@/components/layout/Sidebar.vue";
+import LayoutNested from "@/components/layout/Nested.vue";
 
 export default {
   name: "LayoutIndex",
-  components: { LayoutSidebar },
+  components: { LayoutSidebar, LayoutNested },
+  computed: {
+    menuRoutes() {
+      return routes[0].children;
+    },
+  },
 };
 </script>
 
@@ -75,7 +58,7 @@ export default {
   }
 }
 
-#exam-main {
+#layout-main {
   position: relative;
   margin: 0;
   height: calc(100vh - 48px);
