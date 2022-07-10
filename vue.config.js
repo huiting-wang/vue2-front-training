@@ -77,6 +77,21 @@ module.exports = {
       args[0].title = "Vue Front Exam";
       return args;
     });
+    // 加載 markdown 文件
+    config.module
+      .rule("md")
+      .test(/\.md$/)
+      .use("vue-loader")
+      .loader("vue-loader")
+      .end()
+      .use("vue-markdown-loader")
+      .loader("vue-markdown-loader/lib/markdown-compiler")
+      .options({
+        preset: "default",
+        breaks: true,
+        raw: true,
+        typographer: true,
+      });
 
     // ==================== 生產環境配置 ====================
     if (isProduction) {

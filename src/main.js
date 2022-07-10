@@ -18,6 +18,12 @@ import { mockXHR } from "../mock/server";
 // 引入 Material Design Icon
 import "@mdi/font/css/materialdesignicons.css";
 
+// Markdown 樣式
+import "github-markdown-css";
+
+// 代碼高亮
+import "highlight.js/styles/github.css";
+
 // 引入基礎樣式
 import "@/styles/index.scss";
 

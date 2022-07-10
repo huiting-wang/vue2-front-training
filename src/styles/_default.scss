@@ -1,6 +1,6 @@
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -10,11 +10,11 @@
 
 ::-webkit-scrollbar-thumb {
   background: #c1c1c1;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c1c1c1;
+  background: #aaaaaa;
 }
 
 html {
@@ -28,7 +28,7 @@ body {
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: $white;
+  background-color: $gray-light;
   font-family: $base-font-family;
 }
 
@@ -43,17 +43,6 @@ button {
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-a {
-  text-decoration: none;
-  color: unset;
-  font-size: $base-font-size;
-
-  &:active,
-  &:visited {
-    color: unset;
-  }
 }
 
 // 標題標籤
@@ -92,4 +81,23 @@ ul {
 
 .pointer-events-none {
   pointer-events: none
+}
+
+.markdown-body {
+  pre {
+    background-color: #333333;
+
+    code {
+      color: #aaaaaa;
+    }
+  }
+
+  code {
+    color: #666666;
+    background-color: #dedede;
+  }
+
+  .hljs-comment {
+    color: #999999;
+  }
 }

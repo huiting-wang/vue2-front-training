@@ -46,6 +46,8 @@
     "eslint-plugin-jsdoc": "^39.3.3",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.1.1",
+    "github-markdown-css": "^5.1.0",
+    "highlight.js": "^11.5.1",
     "html-webpack-plugin": "^5.5.0",
     "lodash-webpack-plugin": "^0.11.6",
     "mockjs": "^1.1.0",
@@ -55,6 +57,7 @@
     "sass": "^1.32.13",
     "sass-loader": "^13.0.2",
     "terser-webpack-plugin": "^5.3.3",
+    "vue-markdown-loader": "^2.5.0",
     "vue-template-compiler": "^2.6.14",
     "webpack": "^5.73.0"
   },
