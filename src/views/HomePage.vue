@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import RulesMd from "@/markdown/rules.md";
+import RulesMd from '@/markdown/rules.md';
 
 export default {
-  name: "HomePage",
+  name: 'HomePage',
   components: { RulesMd },
 };
 </script>

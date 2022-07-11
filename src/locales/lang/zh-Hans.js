@@ -1,7 +1,7 @@
-import zhLocale from "element-ui/lib/locale/lang/zh-CN";
+import zhLocale from 'element-ui/lib/locale/lang/zh-CN';
 
 export default {
-  test: "测试",
-  language: "簡中",
+  test: '测试',
+  language: '簡中',
   ...zhLocale,
 };

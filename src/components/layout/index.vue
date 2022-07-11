@@ -30,13 +30,13 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import { routes } from "@/router/routes";
-import LayoutSidebar from "@/components/layout/Sidebar.vue";
-import LayoutNested from "@/components/layout/Nested.vue";
+import { mapState } from 'vuex';
+import { routes } from '@/router/routes';
+import LayoutSidebar from '@/components/layout/Sidebar.vue';
+import LayoutNested from '@/components/layout/Nested.vue';
 
 export default {
-  name: "LayoutIndex",
+  name: 'LayoutIndex',
   components: { LayoutSidebar, LayoutNested },
   computed: {
     ...mapState({
@@ -51,7 +51,7 @@ export default {
      * 左側選單收合事件
      */
     toggleSideBar() {
-      this.$store.dispatch("layout/toggleSideBar");
+      this.$store.dispatch('layout/toggleSideBar');
     },
   },
 };

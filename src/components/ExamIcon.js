@@ -1,11 +1,11 @@
 export default {
-  name: "ExamIcon",
+  name: 'ExamIcon',
   functional: true,
   props: {
     // Material icon name
     title: {
       type: String,
-      default: "",
+      default: '',
     },
     // 文字大小
     fontSize: {
@@ -15,21 +15,21 @@ export default {
     // 文字顏色
     color: {
       type: String,
-      default: "currentColor",
+      default: 'currentColor',
     },
     // 自訂 html tag
     tag: {
       type: String,
-      default: "span",
+      default: 'span',
     },
   },
   render(h, context) {
     const { title, fontSize, color, tag } = context.props;
     const style = {
-      position: "relative",
-      alignSelf: "center",
-      width: "1em",
-      fontSize: typeof fontSize === "number" ? `${fontSize}px` : fontSize,
+      position: 'relative',
+      alignSelf: 'center',
+      width: '1em',
+      fontSize: typeof fontSize === 'number' ? `${fontSize}px` : fontSize,
       color: color,
     };
 

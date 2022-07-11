@@ -1,4 +1,4 @@
-import Vue from "vue";
+import Vue from 'vue';
 import {
   Avatar,
   Autocomplete,
@@ -54,10 +54,10 @@ import {
   Message,
   MessageBox,
   Notification,
-} from "element-ui";
+} from 'element-ui';
 
-import i18n from "@/locales/i18n";
-import ElementLocale from "element-ui/lib/locale";
+import i18n from '@/locales/i18n';
+import ElementLocale from 'element-ui/lib/locale';
 
 Vue.use(Avatar);
 Vue.use(Pagination);

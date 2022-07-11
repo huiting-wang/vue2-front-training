@@ -1,4 +1,4 @@
-import Layout from "@/components/layout/";
+import Layout from '@/components/layout/';
 
 /**
  * 路由鍵值註解
@@ -17,18 +17,18 @@ import Layout from "@/components/layout/";
 export const routes = [
   {
     // 首頁
-    name: "homePage",
-    path: "/",
+    name: 'homePage',
+    path: '/',
     component: Layout,
-    redirect: "/home",
+    redirect: '/home',
     children: [
       {
-        name: "homedIndex",
-        path: "home",
-        component: () => import("@/views/HomePage"),
+        name: 'homedIndex',
+        path: 'home',
+        component: () => import('@/views/HomePage'),
         meta: {
-          icon: "home",
-          title: "團隊開發規範",
+          icon: 'home',
+          title: '團隊開發規範',
         },
       },
     ],

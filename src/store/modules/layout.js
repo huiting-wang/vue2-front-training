@@ -1,6 +1,6 @@
 // 狀態管理模組
-import { Store } from "vuex";
-import { SET_SIDEBAR, SET_SIDEBAR_HOVER } from "@/store/mutation-types";
+import { Store } from 'vuex';
+import { SET_SIDEBAR, SET_SIDEBAR_HOVER } from '@/store/mutation-types';
 
 export default {
   namespaced: true,

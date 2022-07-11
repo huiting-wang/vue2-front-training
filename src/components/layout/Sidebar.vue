@@ -15,14 +15,14 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 
 export default {
-  name: "LayoutSidebar",
+  name: 'LayoutSidebar',
   data() {
     return {
       // 當前頁
-      activeIndex: "",
+      activeIndex: '',
     };
   },
   computed: {

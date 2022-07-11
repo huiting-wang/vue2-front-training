@@ -4,4 +4,4 @@
  * https://vuex.vuejs.org/zh/guide/mutations.html
  * #使用常量替代-mutation-事件类型
  */
-export const SET_SIDEBAR = "SET_SIDEBAR";
+export const SET_SIDEBAR = 'SET_SIDEBAR';

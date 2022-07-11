@@ -1,6 +1,6 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import { routes } from "@/router/routes";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import { routes } from '@/router/routes';
 
 Vue.use(VueRouter);
 
@@ -33,7 +33,7 @@ VueRouter.prototype.replace = function replace(location, onResolve, onReject) {
 };
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes: routes,
   /**

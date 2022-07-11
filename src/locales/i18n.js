@@ -1,10 +1,10 @@
-import Vue from "vue";
-import VueI18n from "vue-i18n";
+import Vue from 'vue';
+import VueI18n from 'vue-i18n';
 
 Vue.use(VueI18n);
 
 export const i18n = new VueI18n({
-  fallbackLocale: "en",
+  fallbackLocale: 'en',
 });
 
 // 已加載語系清單
@@ -20,7 +20,7 @@ function setI18nLanguage(lang) {
   i18n.locale = lang;
 
   // 設置 HTML lang 標籤
-  document.querySelector("html").setAttribute("lang", lang);
+  document.querySelector('html').setAttribute('lang', lang);
 
   return lang;
 }
@@ -55,9 +55,9 @@ export function loadLanguageAsync(lang) {
  * 語系選取清單
  */
 export const languageList = {
-  "zh-Hant": "繁",
-  "zh-Hans": "簡",
-  en: "English",
+  'zh-Hant': '繁',
+  'zh-Hans': '簡',
+  en: 'English',
 };
 
 // 載入當前語系

@@ -37,11 +37,11 @@
 </template>
 
 <script>
-import path from "path";
-import { mapState } from "vuex";
+import path from 'path';
+import { mapState } from 'vuex';
 
 export default {
-  name: "LayoutNested",
+  name: 'LayoutNested',
   props: {
     // 選單項目
     item: {

@@ -1,4 +1,4 @@
-import { toArray } from "lodash";
+import { toArray } from 'lodash';
 
 /**
  * 正規化字串
@@ -13,8 +13,8 @@ export const regexString = (target) => {
   return target
     .toString()
     .toLowerCase()
-    .replace(/[|\\{}()[\]^$+*?.]/g, "\\$&")
-    .replace(/\s/g, "");
+    .replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
+    .replace(/\s/g, '');
 };
 
 /**
@@ -47,16 +47,16 @@ export function uuid() {
   let currentDate = Date.now();
 
   if (
-    typeof performance !== "undefined" &&
-    typeof performance.now === "function"
+    typeof performance !== 'undefined' &&
+    typeof performance.now === 'function'
   ) {
     //use high-precision timer if available
     currentDate += performance.now();
   }
 
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (code) => {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (code) => {
     let randowID = (currentDate + Math.random() * 16) % 16 | 0;
     currentDate = Math.floor(currentDate / 16);
-    return (code === "x" ? randowID : (randowID & 0x3) | 0x8).toString(16);
+    return (code === 'x' ? randowID : (randowID & 0x3) | 0x8).toString(16);
   });
 }

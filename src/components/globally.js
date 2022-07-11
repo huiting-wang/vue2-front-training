@@ -1,5 +1,5 @@
-import Vue from "vue";
-import { upperFirst, camelCase } from "lodash";
+import Vue from 'vue';
+import { upperFirst, camelCase } from 'lodash';
 
 /**
  * 元件全域註冊
@@ -8,7 +8,7 @@ import { upperFirst, camelCase } from "lodash";
  */
 const requireComponent = require.context(
   // The relative path of the components folder
-  ".",
+  '.',
   // Whether or not to look in subfolders
   true,
   // The regular expression used to match base component filenames
@@ -24,9 +24,9 @@ requireComponent.keys().forEach((fileName) => {
     camelCase(
       // Gets the file name regardless of folder depth
       fileName
-        .split("/")
+        .split('/')
         .pop()
-        .replace(/\.\w+$/, "")
+        .replace(/\.\w+$/, '')
     )
   );
 

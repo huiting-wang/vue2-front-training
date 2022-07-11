@@ -1,17 +1,17 @@
-"use strict";
+'use strict';
 
-const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const isProduction = ["production"].includes(process.env.NODE_ENV);
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const isProduction = ['production'].includes(process.env.NODE_ENV);
 
 module.exports = {
-  publicPath: isProduction ? "/vue-front-exam/" : "/",
+  publicPath: isProduction ? '/vue-front-exam/' : '/',
   // 是否開啟 ESlint 檢測
   lintOnSave: true,
   // 是否在打包時產出 Source Map
   productionSourceMap: !isProduction,
   devServer: {
-    server: "https",
+    server: 'https',
     // 啟動後開啟瀏覽器
     open: true,
     // 設置主機地址
@@ -37,19 +37,19 @@ module.exports = {
   },
   // Webpack 設定
   configureWebpack: {
-    name: "Vue Front Exam",
+    name: 'Vue Front Exam',
     // 配置目錄解析別名
     resolve: {
       // 讓 Webpack 5 支援 node.js 路徑 API
       fallback: {
-        path: require.resolve("path-browserify"),
+        path: require.resolve('path-browserify'),
       },
     },
     plugins: [
       // Loadsh 按需引入
       new LodashModuleReplacementPlugin(),
     ],
-    devtool: isProduction ? false : "eval-cheap-module-source-map",
+    devtool: isProduction ? false : 'eval-cheap-module-source-map',
     optimization: {
       minimize: isProduction,
       minimizer: [
@@ -67,25 +67,25 @@ module.exports = {
   },
   chainWebpack: (config) => {
     // 移除 prefetch 插件，避免加載多餘的資源
-    config.plugins.delete("prefetch");
+    config.plugins.delete('prefetch');
     // 移除 preload 插件，避免加載多餘的資源
-    config.plugins.delete("preload");
+    config.plugins.delete('preload');
     // public/index.html - Meta
-    config.plugin("html").tap((args) => {
-      args[0].title = "Vue Front Exam";
+    config.plugin('html').tap((args) => {
+      args[0].title = 'Vue Front Exam';
       return args;
     });
     // 加載 markdown 文件
     config.module
-      .rule("md")
+      .rule('md')
       .test(/\.md$/)
-      .use("vue-loader")
-      .loader("vue-loader")
+      .use('vue-loader')
+      .loader('vue-loader')
       .end()
-      .use("vue-markdown-loader")
-      .loader("vue-markdown-loader/lib/markdown-compiler")
+      .use('vue-markdown-loader')
+      .loader('vue-markdown-loader/lib/markdown-compiler')
       .options({
-        preset: "default",
+        preset: 'default',
         breaks: true,
         raw: true,
         typographer: true,
@@ -93,10 +93,10 @@ module.exports = {
 
     // ==================== 生產環境配置 ====================
     if (isProduction) {
-      config.mode = "production";
+      config.mode = 'production';
       // 分割公用模組
       config.optimization.splitChunks({
-        chunks: "all",
+        chunks: 'all',
         minSize: 20480,
         minChunks: 1,
         maxAsyncRequests: 10,
@@ -111,19 +111,19 @@ module.exports = {
                   /[\\/]node_modules[\\/](.*?)([\\/]|$)/
                 )?.[1] ||
                 module.context ||
-                "vendors";
+                'vendors';
 
               // npm package names are URL-safe, but some servers don't like @ symbols
-              return `chunks-${packageName.replace("@", "")}`;
+              return `chunks-${packageName.replace('@', '')}`;
             },
-            chunks: "all",
+            chunks: 'all',
             priority: 90,
             reuseExistingChunk: true,
           },
           components: {
             test: /[\\/]src[\\/]components/,
-            name: "chunk-components",
-            chunks: "initial",
+            name: 'chunk-components',
+            chunks: 'initial',
             priority: 80,
           },
           default: {
@@ -132,7 +132,7 @@ module.exports = {
           },
         },
       });
-      config.optimization.runtimeChunk("single");
+      config.optimization.runtimeChunk('single');
     }
   },
 };

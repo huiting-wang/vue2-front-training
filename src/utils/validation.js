@@ -5,7 +5,7 @@
  * @returns  {boolean} - 是否為數字
  */
 export const isNumber = (value) => {
-  return typeof value === "number" && !Number.isNaN(value);
+  return typeof value === 'number' && !Number.isNaN(value);
 };
 
 /**
@@ -15,7 +15,7 @@ export const isNumber = (value) => {
  * @returns {boolean} - 是否為字串
  */
 export const isString = (string) => {
-  return typeof string === "string";
+  return typeof string === 'string';
 };
 
 /**

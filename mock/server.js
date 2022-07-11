@@ -1,19 +1,19 @@
-import Mock from "mockjs";
-import templates from "./v1";
+import Mock from 'mockjs';
+import templates from './v1';
 
 /**
  * @param {string} url - 請求網址
  * @returns {object}
  */
 function param2Obj(url) {
-  const search = decodeURIComponent(url.split("?")[1]).replace(/\+/g, " ");
+  const search = decodeURIComponent(url.split('?')[1]).replace(/\+/g, ' ');
   if (!search) {
     return {};
   }
   const obj = {};
-  const searchArr = search.split("&");
+  const searchArr = search.split('&');
   searchArr.forEach((v) => {
-    const index = v.indexOf("=");
+    const index = v.indexOf('=');
     if (index !== -1) {
       const name = v.substring(0, index);
       const val = v.substring(index + 1, v.length);
@@ -67,8 +67,8 @@ export function mockXHR() {
 
   templates.forEach((tmpl) => {
     Mock.mock(
-      new RegExp(tmpl.url + ".*"),
-      tmpl.type || "get",
+      new RegExp(tmpl.url + '.*'),
+      tmpl.type || 'get',
       XHR2ExpressReqWrap(tmpl.response)
     );
   });
