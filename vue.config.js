@@ -5,8 +5,6 @@ const TerserPlugin = require("terser-webpack-plugin");
 const isProduction = ["production"].includes(process.env.NODE_ENV);
 
 module.exports = {
-  // 打包輸出的目錄名稱
-  outputDir: "dist",
   publicPath: isProduction ? "/vue-front-exam/" : "/",
   // 是否開啟 ESlint 檢測
   lintOnSave: true,
