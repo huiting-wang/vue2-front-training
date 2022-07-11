@@ -1,7 +1,7 @@
 <template>
   <el-menu
     class="layout-sidebar"
-    :collapse="false"
+    :collapse="!sidebarOpened"
     :default-active="activeIndex"
     background-color="#2c3e50"
     text-color="#AAABAB"
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "LayoutSidebar",
   data() {
@@ -22,6 +24,11 @@ export default {
       // 當前頁
       activeIndex: "",
     };
+  },
+  computed: {
+    ...mapState({
+      sidebarOpened: (state) => state.layout.sidebarOpened,
+    }),
   },
   watch: {
     $route(to) {
@@ -37,6 +44,7 @@ export default {
 <style lang="scss" scoped>
 @include component(layout, sidebar) {
   z-index: 1999;
+  border: none;
 
   @include element(wrapper) {
     position: relative;
@@ -48,7 +56,7 @@ export default {
 }
 
 .el-menu--collapse {
-  width: 56px;
+  width: 64px;
 
   &::v-deep .el-submenu__icon-arrow {
     opacity: 0 !important;

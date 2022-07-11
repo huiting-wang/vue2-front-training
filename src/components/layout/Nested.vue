@@ -8,7 +8,9 @@
       class="layout-sidebar__items--link"
     >
       <ExamIcon :title="item.meta && item.meta.icon" />
-      <span class="layout-sidebar__items--title">{{ item.meta.title }}</span>
+      <span v-show="sidebarOpened" class="layout-sidebar__items--title">{{
+        item.meta.title
+      }}</span>
     </el-menu-item>
 
     <el-submenu v-else :index="item.path" popper-append-to-body>
@@ -36,6 +38,7 @@
 
 <script>
 import path from "path";
+import { mapState } from "vuex";
 
 export default {
   name: "LayoutNested",
@@ -45,6 +48,11 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  computed: {
+    ...mapState({
+      sidebarOpened: (state) => state.layout.sidebarOpened,
+    }),
   },
   methods: {
     /**
@@ -78,20 +86,24 @@ export default {
     .el-menu-item {
       display: flex;
       align-items: center;
-      padding: 15px 20px !important;
+      padding: 0px 20px !important;
       margin-bottom: 5px;
+      line-height: 48px;
+      height: 48px;
+      transition: all ease-in-out 0.25s;
+      -webkit-transition: all ease-in-out 0.25s;
     }
 
     // 選單項目連結
     @include modifier(link) {
       display: block;
-      padding: 15px 20px !important;
+      padding: 0px 20px !important;
       margin-bottom: 5px;
     }
 
     // 選單文字
     @include modifier(title) {
-      margin-left: 10px;
+      margin-left: 20px;
     }
 
     .el-menu {
@@ -110,12 +122,6 @@ export default {
     // 箭頭樣式
     ::v-deep .el-icon-arrow-down {
       margin-top: -11px;
-      // @include mdi-icon {
-      //   &::before {
-      //     content: "\F0140";
-      //     font-size: 24px;
-      //   }
-      // }
     }
   }
 }
