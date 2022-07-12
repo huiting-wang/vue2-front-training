@@ -86,7 +86,20 @@ ul {
 .markdown-body {
   margin-left: 20px;
   margin-right: 20px;
-  background-color: $white;
+  background-color: $gray-light;
+
+  ul {
+    list-style: disc;
+
+    li {
+      padding-left: 0.25em;
+      line-height: 1.75em;
+
+      p {
+        margin: 5px 0;
+      }
+    }
+  }
 
   pre {
     background-color: #333333;
@@ -103,5 +116,13 @@ ul {
 
   .hljs-comment {
     color: #999999;
+  }
+
+  .language-JSON {
+
+    .hljs-attr,
+    .hljs-string {
+      color: #E6A23C;
+    }
   }
 }

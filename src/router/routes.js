@@ -23,12 +23,21 @@ export const routes = [
     redirect: '/home',
     children: [
       {
-        name: 'homedIndex',
+        name: 'rulesMarkdown',
         path: 'home',
         component: () => import('@/views/HomePage'),
         meta: {
           icon: 'home',
           title: '團隊開發規範',
+        },
+      },
+      {
+        name: 'featureMarkdown',
+        path: 'feature',
+        component: () => import('@/views/FeaturePage'),
+        meta: {
+          icon: 'information',
+          title: '主題功能需求',
         },
       },
     ],

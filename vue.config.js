@@ -5,7 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const isProduction = ['production'].includes(process.env.NODE_ENV);
 
 module.exports = {
-  publicPath: isProduction ? '/vue-front-exam/' : '/',
+  publicPath: isProduction ? '/vue2-front-training/' : '/',
   // 是否開啟 ESlint 檢測
   lintOnSave: true,
   // 是否在打包時產出 Source Map
@@ -37,7 +37,7 @@ module.exports = {
   },
   // Webpack 設定
   configureWebpack: {
-    name: 'Vue Front Exam',
+    name: 'Vue2 Front Training',
     // 配置目錄解析別名
     resolve: {
       // 讓 Webpack 5 支援 node.js 路徑 API
