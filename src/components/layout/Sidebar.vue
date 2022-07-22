@@ -58,7 +58,7 @@ export default {
 .el-menu--collapse {
   width: 64px;
 
-  &::v-deep .el-submenu__icon-arrow {
+  &:deep(.el-submenu__icon-arrow) {
     opacity: 0 !important;
   }
 }

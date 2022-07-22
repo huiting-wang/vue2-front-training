@@ -145,7 +145,7 @@
 @mixin scrollbar($weight: 6px, $track: transparent, $thumb: $gray-light-5) {
 
   /* WebKit and Chromiums */
-  &::v-deep ::-webkit-scrollbar {
+  &:deep ::-webkit-scrollbar {
     width: $weight;
     height: $weight;
   }

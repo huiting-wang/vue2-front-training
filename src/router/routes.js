@@ -25,19 +25,37 @@ export const routes = [
       {
         name: 'rulesMarkdown',
         path: 'home',
-        component: () => import('@/views/HomePage'),
+        component: () => import('@/views/HomePage.vue'),
         meta: {
           icon: 'home',
           title: '團隊開發規範',
         },
       },
       {
-        name: 'featureMarkdown',
-        path: 'feature',
-        component: () => import('@/views/FeaturePage'),
+        name: 'subjectMarkdown',
+        path: 'subject',
+        component: () => import('@/views/SubjectPage.vue'),
         meta: {
           icon: 'information',
-          title: '主題功能需求',
+          title: '主題資訊',
+        },
+      },
+      {
+        name: 'frontMarkdown',
+        path: 'front-end-feature',
+        component: () => import('@/views/FrontFeature.vue'),
+        meta: {
+          icon: 'function-variant',
+          title: '前台功能需求',
+        },
+      },
+      {
+        name: 'BackEndMarkdown',
+        path: 'back-end-feature',
+        component: () => import('@/views/BackFeature.vue'),
+        meta: {
+          icon: 'function-variant',
+          title: '後台功能需求',
         },
       },
     ],
